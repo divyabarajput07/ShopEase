@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Wishlist</title>
+  </head>
+  <body>
+    <h1>❤️ My Wishlist</h1>
+
+    {% for item in items %}
+
+    <h3>{{ item.product.name }}</h3>
+
+    <p>₹{{ item.product.price }}</p>
+
+    <img src="{{ item.product.image.url }}" width="150" />
+
+    <hr />
+
+    {% empty %}
+
+    <h2>No Products In Wishlist</h2>
+
+    {% endfor %}
+  </body>
+</html>

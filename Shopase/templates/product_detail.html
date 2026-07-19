@@ -1,0 +1,24 @@
+{% load static %}
+
+<!doctype html>
+<html>
+  <head>
+    <title>{{ product.name }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div class="card" style="width: 400px; margin: 40px auto">
+      <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+
+      <h2>{{ product.name }}</h2>
+
+      <p>{{ product.description }}</p>
+
+      <h3>₹{{ product.price }}</h3>
+
+      <a href="{% url 'add_to_cart' product.id %}">
+        <button>Add to Cart</button>
+      </a>
+    </div>
+  </body>
+</html>

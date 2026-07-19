@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Shopping Cart</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+
+  <body>
+    <div class="cart-container">
+      <h1>🛒 Shopping Cart</h1>
+
+      {% for item in cart_items %}
+
+      <h3>{{ item.product.name }}</h3>
+
+      <p>Price: ₹{{ item.product.price }}</p>
+
+      <div class="quantity-box">
+        <span>Quantity:</span>
+
+        <a href="{% url 'decrease_quantity' item.id %}">
+          <button>-</button>
+        </a>
+
+        <span>{{ item.quantity }}</span>
+
+        <a href="{% url 'increase_quantity' item.id %}">
+          <button>+</button>
+        </a>
+      </div>
+
+      <a href="{% url 'remove_from_cart' item.id %}">
+        <button class="remove-btn">❌ Remove</button>
+      </a>
+
+      <hr />
+
+      {% empty %}
+
+      <h2>Your Cart is Empty</h2>
+
+      {% endfor %}
+
+      <h2>Total: ₹{{ total }}</h2>
+      <a href="{% url 'checkout' %}">
+        <button>Proceed To Checkout</button>
+      </a>
+    </div>
+  </body>
+</html>
